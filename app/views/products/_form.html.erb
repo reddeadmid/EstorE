@@ -1,19 +1,21 @@
-<%= form_with model: [ @product ] do |form| %>
+<%= form_with model: @product do |form| %>
   <div class="mb-3"> <%# Product Name %>
-    <%= form.text_field :commenter, :placeholder => "Product Name", class: "form-control" %>
+    <%= form.text_field :name, :placeholder => "Product Name", class: "form-control" %>
   </div>
   <div class="mb-3"> <%# Product Description%>
-    <%= form.text_area :body, :placeholder => "Product Description", class: "form-control" %>
+    <%= form.text_area :description, :placeholder => "Product Description", class: "form-control" %>
   </div>
   <div class="mb-3"> <%# Product Stock %>
-    <%= form.text_field :body, :placeholder => "Stock", class: "form-control" %>
+    <%= form.number_field :stock, :placeholder => "Stock", class: "form-control" %>
   </div>
   <div class="mb-3"> <%# Product Price %>
-    <%= form.text_field :body, :placeholder => "Price", class: "form-control" %>
+    <%= form.number_field :price, step: 0.01, :placeholder => "Price", class: "form-control" %>
   </div>
-        <%= form.submit class: 'btn-dark btn-sm'%>
-        <%= form.label :status %><br>
-        <%= form.select  :status, ['public', 'private', 'archived'], selected: 'public' %>
-    </div>
+  <div>
+    <%= form.label :status %><br>
+    <%= form.select  :status, ['public', 'private', 'archived'], selected: 'public' %>
+  </div>
+  <div>
+    <%= form.submit class: 'btn-dark btn-sm'%>
   </div>
 <% end %>
