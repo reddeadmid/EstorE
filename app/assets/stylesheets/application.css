@@ -23,3 +23,26 @@
 a:hover {
     background-color: rgba(255, 255, 255, 0.041);
 }
+
+a.title {
+    color: black;
+}
+
+img.scaling_img {
+  width: 75%;
+  height: 250px;
+  overflow: hidden;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+    position: relative;
+  }
+  #clip {
+    position: absolute;
+    height: 123px;
+    clip: rect(0, 0, 125px, 0);
+    /* clip: shape(top, right, bottom, left); NB 'rect' is the only available option */
+  }
