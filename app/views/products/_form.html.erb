@@ -1,21 +1,41 @@
 <%= form_with model: @product do |form| %>
-  <div class="mb-3"> <%# Product Name %>
-    <%= form.text_field :name, :placeholder => "Product Name", class: "form-control" %>
-  </div>
-  <div class="mb-3"> <%# Product Description%>
-    <%= form.text_area :description, :placeholder => "Product Description", class: "form-control" %>
-  </div>
-  <div class="mb-3"> <%# Product Stock %>
-    <%= form.number_field :stock, :placeholder => "Stock", class: "form-control" %>
-  </div>
-  <div class="mb-3"> <%# Product Price %>
-    <%= form.number_field :price, step: 0.01, :placeholder => "Price", class: "form-control" %>
-  </div>
-  <div>
-    <%= form.label :status %><br>
-    <%= form.select  :status, ['public', 'private', 'archived'], selected: 'public' %>
-  </div>
-  <div>
-    <%= form.submit class: 'btn-dark btn-sm'%>
+  <div class="container">
+    <div class="row">
+      <div class="col mb-3"> <%# Product Name %>
+        <%= form.text_field :name, :placeholder => "Product Name", class: "form-control" %>
+      </div>
+    </div> 
+    <div class="row">
+      <div class="col mb-3"> <%# Product Description%>
+            <%= form.text_area :description, :placeholder => "Product Description", class: "form-control" %>          
+      </div>
+    </div>
+    <div class="row">
+      <div class="col mb-3"> <%# Product Stock %>
+            <%= form.number_field :stock, :placeholder => "Stock", class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col mb-3"> <%# Product Price %>
+        <%= form.number_field :price, step: 0.01, :placeholder => "Price", class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col mb-3"> <%# Product Image%>
+        <br>
+        <p>Product Image</p>
+        <%= form.file_field :image, :placeholder => "Product Image", class: "form-control" %>
+        <br>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h5><%= form.submit class: 'btn-dark btn-sm'%></h5>
+      </div>
+      <div class="col">
+        <h5><strong><%= form.label :status %> | </strong>
+        <%= form.select  :status, ['public', 'private', 'archived'], selected: 'public', class: "form-select form-select-sm" %></h5>
+      </div>
+    </div>
   </div>
 <% end %>
