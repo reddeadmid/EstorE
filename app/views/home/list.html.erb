@@ -6,7 +6,9 @@
     </div>
     <div class="row">
         <div class="col">
-            <%= %>
+            <%= @products.each do |product| %>
+                <%= product.name %>
+            <% end %>
         </div>
     </div>
 </div>
