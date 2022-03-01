@@ -12,7 +12,14 @@
               <%= image_tag(product.image, class: "card-img-top") %>
             <% end %>
             <div class="card-body">
-              <h5 class="card-title"><strong><%= link_to "#{product.name} | $#{product.price}", product_path(product), class: "title" %></strong></h5>
+            <div class="row">
+              <div class="col-8">
+                <h5 class="card-title"><strong><%= link_to "#{product.name} | $#{product.price} ", product_path(product), class: "title" %></strong></h5>
+              </div>
+              <div class="col" style="text-align: right">
+                <button class="btn-dark btn-sm" type="button"><%= link_to "Buy", checkout_path%></button>
+              </div>
+              </div>
               <p class="card-text"><%= sanitize(product.description[0,100]) %></p>
             </div>
           </div>

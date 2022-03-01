@@ -16,6 +16,8 @@
     </ul>
     </div>
     <div class="row">
-    <%="Your total is | $#{sum}"%>
+      <div class="col">
+        <%="Your total is | $#{sum} "%><button class="btn-dark btn-sm" type="button"><%= link_to "Checkout", checkout_path%></button>
+      </div>
     </div>
 </div>
