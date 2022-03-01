@@ -12,7 +12,7 @@
               <%= image_tag(product.image, class: "card-img-top") %>
             <% end %>
             <div class="card-body">
-              <h5 class="card-title"><strong><%= link_to product.name, product, class: "title" %> | $<%= product.price %></strong></h5>
+              <h5 class="card-title"><strong><%= link_to "#{product.name} | $#{product.price}", product_path(product), class: "title" %></strong></h5>
               <p class="card-text"><%= sanitize(product.description[0,100]) %></p>
             </div>
           </div>

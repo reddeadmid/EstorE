@@ -10,12 +10,14 @@
           <%= link_to "Home", root_path, class: "nav-link active" %>
         </li>
         <li class="nav-item">
-          <a href="/products" class="nav-link active">Products</a>
+          <%= link_to "Products", products_path, class: "nav-link active" %>
         </li>
         <li class="nav-item">
           <%= link_to "New Product", new_product_path, class: "nav-link active" %>
         </li>
-
+        <li class="nav-item">
+          <%= link_to "Cart|#{@item_count}", cart_path, class: "nav-link active" %>
+        </li>
       </ul>
     </div>
   </div>
