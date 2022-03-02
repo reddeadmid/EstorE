@@ -7,6 +7,8 @@
     </div>
     <div class="row">
         <div class="col">
+            <%if session[:user].present? %><p>logged in as | <%=session[:user]%></p>
+            <%else%><p>not logged in</p><%end%>
             <p><%= @products.count %> | Products and counting</p>
             <br>
         </div>

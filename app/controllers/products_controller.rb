@@ -1,6 +1,4 @@
 class ProductsController < ApplicationController
-    before_action :initialize_cart
-
     def index
         @products = Product.all
     end
@@ -9,7 +7,13 @@ class ProductsController < ApplicationController
     end
 
     def new
-        @product = Product.new
+        uid = session[:user].to_s
+        if uid == "1" || uid == "2"
+            @product = Product.new
+        else
+            message = "Access Denied"
+            redirect_to products_path, notice: message
+        end
     end
 
     def create
@@ -63,11 +67,5 @@ class ProductsController < ApplicationController
 private
     def product_params
         params.require(:product).permit(:name, :description, :stock, :price, :status, :image)
-    end
-
-    def initialize_cart
-        empty_cart = Product.all.map{|p| [p.id, 0]}.to_h # maps product id and count in session
-        session[:cart] ||= empty_cart # creates an empty cart if one does not exist
-        @item_count = session[:cart].values.reduce(:+) # number of products in cart
     end
 end

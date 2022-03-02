@@ -12,9 +12,12 @@
         <li class="nav-item">
           <%= link_to "Products", products_path, class: "nav-link active" %>
         </li>
+        <%uid = session[:user].to_s%>
+        <%if uid == "1" || uid == "2"%>
         <li class="nav-item">
           <%= link_to "New Product", new_product_path, class: "nav-link active" %>
-        </li>
+        </li>        
+        <%end%>
         <li class="nav-item">
           <%= link_to "Cart|#{@item_count}", cart_path, class: "nav-link active" %>
         </li>

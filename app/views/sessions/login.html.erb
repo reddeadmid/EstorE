@@ -1,0 +1,20 @@
+<div class="container"> 
+  <div class="row">
+    <div class="col">
+      <h1>Users | login</h1>
+    </div>
+  </div>
+    <div class="col">
+      <p><strong>Users are | </strong>
+        <% @users.each_with_index do |user, index| %>
+          <%if index.to_d == @users.size.to_d - 1%>
+            <%=user.name%> 
+          <%else%>
+            <%=user.name%>, 
+          <%end%>
+        <%end%>
+      </p>
+    </div>
+  </div>
+</div>
+<%= render "form", user: @user %>

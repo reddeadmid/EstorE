@@ -1,0 +1,20 @@
+<%= form_with model: @user do |form|%>
+  <div class="container">
+    <div class="row">
+      <div class="col mb-3"> <%# User Name %>
+        <%= form.text_field :name, :placeholder => "Username", class: "form-control" %>
+      </div>
+    </div> 
+    <div class="row">
+      <div class="col mb-3"> <%# Password %>
+            <%= form.text_field :password, :placeholder => "Password", class: "form-control" %>          
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="d-grid gap-2">
+        <%= form.submit @submit_text, class: 'btn btn-dark'%>
+      </div>
+    </div>
+  </div>
+<% end %>
