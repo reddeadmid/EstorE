@@ -6,16 +6,16 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">
-            <%if session[:user].present? %><p>logged in as | <%=session[:user]%></p>
-            <%else%><p>not logged in</p><%end%>
-            <p><%= @products.count %> | Products and counting</p>
-            <br>
-        </div>
+        <div class="col"><h5>
+            <%if logged_in? %>Logged in as | <%=current_user.name%> | <%= link_to "Logout", logout_path, class:"btn-sm btn-dark"%>
+            <%else%>You are not logged in | <%= link_to "Login", login_path, class:"btn-sm btn-dark"%> || <%= link_to "Create Login", new_user_path, class:"btn-sm btn-dark", disabled: true %><%end%>
+        </h5></div>
+        <div class="col"><h5>
+            <%= @products.count %> | Products and counting
+        </h5></div>
     </div>
     <div class="row">
-        <br>
-        <h2><strong>FAQ's</strong></h2>
+        <h2><br><strong>FAQ's</strong></h2>
         <div class="col">
             <h3>What do we sell?</h3>
             <br>

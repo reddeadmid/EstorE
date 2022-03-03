@@ -2,17 +2,16 @@ class ProductsController < ApplicationController
     def index
         @products = Product.all
     end
+
     def show
         @product = Product.find(params[:id])
     end
 
     def new
-        uid = session[:user].to_s
-        if uid == "1" || uid == "2"
-            @product = Product.new
+        if !helpers.super_user? 
+            redirect_to login_path 
         else
-            message = "Access Denied"
-            redirect_to products_path, notice: message
+            @product = Product.new
         end
     end
 
@@ -27,24 +26,32 @@ class ProductsController < ApplicationController
     end
     
     def edit
-        @product = Product.find(params[:id])
+        if !helpers.super_user? 
+            redirect_to product_path
+        else
+            @product = Product.find(params[:id])
+        end
     end
     
     def update
         @product = Product.find(params[:id])
 
         if @product.update(product_params)
-            redirect_to @product
+            redirect_to product_path
         else
             render :edit, status: :unprocessable_entity
         end
     end
     
     def destroy
-        @product = Product.find(params[:id])
-        @product.destroy
-    
-        redirect_to product_path, status: :see_other
+        if !helpers.super_user? 
+            redirect_to product_path
+        else
+            @product = Product.find(params[:id])
+            @product.destroy
+        
+            redirect_to products_path, status: :see_other
+        end
     end
 
     def cart
