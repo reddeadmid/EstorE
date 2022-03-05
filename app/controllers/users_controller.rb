@@ -1,26 +1,16 @@
 class UsersController < ApplicationController
 
   def new
-    if helpers.super_user?
-      @user = User.new
-    else
-      message = "We are not allowing new users at this time."
-      redirect_to login_path, notice: message
-    end
+    @user = User.new
   end
 
   def create
-    if helpers.super_user?
-      @user = User.new(user_params)
-      if @user.save
-        session[:user] = @user.id
-        redirect_to root_path
-      else
-        render :new
-      end
+    @user = User.new(user_params)
+    if @user.save
+      session[:user] = @user.id
+      redirect_to root_path
     else
-      message = "We are not allowing new users at this time."
-      redirect_to login_path, notice: message
+      render :new
     end
   end
 
