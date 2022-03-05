@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-
+  before_action :initialize_session
+  
   def new
     @user = User.new
   end
