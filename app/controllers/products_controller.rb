@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
     before_action :initialize_session
-    
+
     def index
         @products = Product.all
     end
@@ -69,8 +69,14 @@ class ProductsController < ApplicationController
     
     def buy
         @product = Product.find(params[:id])
-        session[:cart][@product.id.to_s]+=1
-        redirect_to product_path
+        @product.stock = @product.stock-=1
+        if @product.stock < 0
+            redirect_to product_path
+        else
+            @product.save
+            session[:cart][@product.id.to_s]+=1
+            redirect_to product_path
+        end
     end
     
 private

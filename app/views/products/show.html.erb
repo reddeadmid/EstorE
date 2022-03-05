@@ -4,7 +4,12 @@
       <h1><%= @product.name %></h1>
       <p><strong>Description | </strong><%= @product.description %></p>
       <p><strong>Price | </strong><%= @product.price %></p>
-      <p><strong>Stock | </strong><%= @product.stock %></p>
+      <p><strong>Stock | </strong>
+      <% if @product.stock <= 0 %>
+        Out of Stock
+      <% else %>
+        <%= @product.stock %>
+      <% end %></p>
       <button class="btn-dark btn-sm" type="button"><%= link_to "Buy", purchase_path(@product) %></button>
       <button class="btn-dark btn-sm" type="button"><%= link_to "Edit", edit_product_path(@product)%></button>
       <button class="btn-dark btn-sm" type="button"><%= link_to "Destroy", product_path(@product), data: {
