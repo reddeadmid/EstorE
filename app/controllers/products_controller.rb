@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+    before_action :initialize_session
+    
     def index
         @products = Product.all
     end
