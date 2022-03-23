@@ -78,6 +78,11 @@ class ProductsController < ApplicationController
             redirect_to product_path
         end
     end
+
+    def json
+        @products = Product.all
+        render json: @products
+    end
     
 private
     def product_params

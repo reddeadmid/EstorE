@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'users/login'
   root "home#index"
+  get '/products.json', to: 'products#json', as: 'json'
 
   get '/products/:id/buy', to: 'products#buy', as: 'purchase'
   get '/cart', to: 'products#cart', as: 'cart'
