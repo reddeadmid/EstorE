@@ -81,7 +81,7 @@ class ProductsController < ApplicationController
 
     def json
         @products = Product.all
-        render json: @products
+        render json: @products, only: [:id, :name, :price, :stock]
     end
     
 private
