@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
     def clearsession
         session[:user] = nil
         session[:cart] = nil
+        redirect_to root_path
     end
 
 private

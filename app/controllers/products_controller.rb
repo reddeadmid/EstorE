@@ -74,7 +74,9 @@ class ProductsController < ApplicationController
             redirect_to product_path
         else
             @product.save
-            session[:cart][@product.id.to_s]+=1
+            curr_q = session[:cart][@product.id.to_s].to_i
+            curr_q += 1
+            session[:cart][@product.id.to_s]=curr_q
             redirect_to product_path
         end
     end
